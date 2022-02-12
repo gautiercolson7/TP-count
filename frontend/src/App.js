@@ -1,12 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import React from "react";
 
 function App() {
+
+  const [data, setData] = React.useState(null);
+
+  React.useEffect(() => {
+    fetch("http://localhost:5000/")
+    .then((res) => res.json())
+    .then((data) => setData(data.pageCount))
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <div>Page opened <p id="page-count"></p> times</div>
-      </header>
+      <h1> Page opened {data} times.</h1>
     </div>
   );
 }
