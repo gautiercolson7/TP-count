@@ -1,9 +1,12 @@
-import React from 'react'
-
+'use strict'
 const express = require('express')
 const app = express()
 const session = require('express-session');
+const cors = require('cors')
+
 const PORT = 4000;
+
+app.use(cors())
 
 app.use(
     session({
@@ -24,5 +27,5 @@ app.get('/', function(req, res){
 });
 
 app.listen(PORT, () => {
-    console.log('Serveur demarré')
+    console.log(`Serveur demarré sur le port ${PORT}`)
 })
