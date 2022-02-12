@@ -3,19 +3,19 @@ pipeline {
     stages {
         stage('Access') {
 			steps {
-				git([url:'https://github.com/gautiercolson7/TP-count.git', branch:'master'])
+				git([url:'https://github.com/gautiercolson7/tp-count.git', branch:'master'])
 			}
 		}
 		stage('Build') {
 			steps {
-				bat 'docker build -t "TP-backend" ./backend'
-				bat 'docker build -t "TP-frontend" ./frontend'
+				bat 'docker build -t "tp-backend" ./backend'
+				bat 'docker build -t "tp-frontend" ./frontend'
 			}
 		}
 		stage('Remove') {
 			steps {
-				bat 'docker image rm TP-backend'
-				bat 'docker image rm TP-frontend'
+				bat 'docker image rm tp-backend'
+				bat 'docker image rm tp-frontend'
 			}
 		}
 		stage('Compose') {
