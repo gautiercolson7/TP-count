@@ -3,6 +3,6 @@ WORKDIR /backend
 COPY backend/package.json ./
 COPY backend/package-lock.json ./
 RUN npm install 
-COPY back/. .
+COPY backend/. .
 EXPOSE 5000
 CMD ["npm", "start", "backend"]
