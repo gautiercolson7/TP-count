@@ -1,6 +1,8 @@
 FROM node:8.4.0
-WORKDIR /app
-COPY * ./
-RUN npm install -g
-EXPOSE 4000
-CMD ["npm", "start"]
+WORKDIR /backend
+COPY backend/package.json ./
+COPY backend/package-lock.json ./
+RUN npm install 
+COPY back/. .
+EXPOSE 5000
+CMD ["npm", "start", "backend"]
