@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    stages {
+        stage('Access') {
+			steps {
+				git([url:'https://github.com/gautiercolson7/TP-count.git', branch:'master'])
+			}
+		}
+		stage('Build') {
+			steps {
+				bat 'docker build -t "TP-backend" ./backend'
+				bat 'docker build -t "TP-frontend" ./frontend'
+			}
+		}
+		stage('Remove') {
+			steps {
+				bat 'docker image rm TP-backend'
+				bat 'docker image rm TP-frontend'
+			}
+		}
+		stage('Compose') {
+			steps {
+				bat 'docker-compose up'
+			}
+		}
+    }
+}
